@@ -59,7 +59,7 @@ class StartScreen extends StatelessWidget {
                         fontSize: 18.sp,
                       ),
                       onPressed: () {
-                        // context.pushNamed(Routes.signUpScreen);
+                         context.pushNamed(Routes.signupScreen);
                       },
                       backgroundColor: Colors.white,
                       radius: 20.r,

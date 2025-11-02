@@ -27,7 +27,7 @@ class _LogInFormState extends State<LogInForm> {
       key: context.read<LoginCubit>().formKey,
       child: Column(
         children: [
-          verticalSpace(20.h),
+          verticalSpace(30.h),
           AppTextFormField(
             controller: context.read<LoginCubit>().loginEmail,
             validator: (value) {
@@ -39,10 +39,10 @@ class _LogInFormState extends State<LogInForm> {
               return null;
             },
             label: const Text("Email"),
-            labelStyle:TextStyle(color: Colors.black,fontSize: 18.sp),
+            labelStyle: TextStyle(color: Colors.black, fontSize: 16.sp),
             radius: 16,
-            textStyle: const TextStyle(color: Colors.white),
-            focusBorderColor: Colors.lightBlue,
+            textStyle: const TextStyle(color: Colors.black),
+            focusBorderColor: Colors.black,
             enableBorderColor: Colors.grey,
           ),
           verticalSpace(16.h),
@@ -55,8 +55,9 @@ class _LogInFormState extends State<LogInForm> {
               return null;
             },
             label: const Text("Password"),
-            labelStyle:TextStyle(color: Colors.black,fontSize: 18.sp),
+            labelStyle: TextStyle(color: Colors.black, fontSize: 16.sp),
             radius: 16,
+
             isSecure: isSecured,
             suffixIcon: IconButton(
               iconSize: 25,
@@ -67,11 +68,11 @@ class _LogInFormState extends State<LogInForm> {
               },
 
               icon: isSecured
-                  ? const Icon(Icons.visibility_off, color: Colors.lightBlue)
-                  : const Icon(Icons.visibility, color: Colors.lightBlue),
+                  ? const Icon(Icons.visibility_off, color: Colors.black)
+                  : const Icon(Icons.visibility, color: Colors.black),
             ),
-            textStyle: const TextStyle(color: Colors.white),
-            focusBorderColor: Colors.lightBlue,
+            textStyle: const TextStyle(color: Colors.black),
+            focusBorderColor: Colors.black,
             enableBorderColor: Colors.grey,
           ),
           verticalSpace(5.h),
@@ -79,12 +80,13 @@ class _LogInFormState extends State<LogInForm> {
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: () {
-                context.pushNamed(Routes.startScreen);
+               // context.pushNamed(Routes.startScreen);
+               
               },
               child: Text(
                 "Forget Password ?",
 
-                style: TextStyle(color: Colors.lightBlue, fontSize: 14.sp),
+                style: TextStyle(color: Colors.black, fontSize: 14.sp),
               ),
             ),
           ),
@@ -101,9 +103,9 @@ class _LogInFormState extends State<LogInForm> {
             },
             builder: (context, state) {
               return AppButton(
-                onPressed:(){},
-                backgroundColor: Colors.transparent,
-                borderSide:const BorderSide(color: Colors.lightBlue),
+                onPressed: () {},
+                backgroundColor: Colors.black,
+                borderSide: const BorderSide(color: Colors.white),
                 radius: 25,
                 buttonWidth: 280.w,
                 child: state is LoginLoading
@@ -117,10 +119,7 @@ class _LogInFormState extends State<LogInForm> {
                       )
                     : const Text(
                         "Login",
-                        style: TextStyle(
-                          color: Colors.lightBlue,
-                          fontSize: 16,
-                        ),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
               );
             },

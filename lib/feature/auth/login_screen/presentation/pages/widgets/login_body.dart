@@ -15,6 +15,7 @@ class LoginBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          verticalSpace(25.h),
           Text(
             "Welcome Back!",
             style: TextStyle(
@@ -29,6 +30,7 @@ class LoginBody extends StatelessWidget {
           ),
 
           verticalSpace(20.h),
+
           Row(
             children: [
               Expanded(
@@ -56,7 +58,7 @@ class LoginBody extends StatelessWidget {
               ),
             ],
           ),
-          LogInForm(),
+          const LogInForm(),
         ],
       ),
     );
