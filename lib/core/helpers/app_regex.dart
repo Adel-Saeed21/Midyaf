@@ -34,4 +34,10 @@ class AppRegex {
   static bool hasMinLength(String password) {
     return RegExp(r'^(?=.{8,})').hasMatch(password);
   }
+  static bool isNameValid(String name) {
+    final n = name.trim();
+    return RegExp(
+            r"^(?=.{2,50}$)([A-Za-z]+(?:[ '\-][A-Za-z]+)*|[\u0600-\u06FF]+(?:[ \'\-\u0600-\u06FF][\u0600-\u06FF]+)*)$")
+        .hasMatch(n);
+  }
 }
