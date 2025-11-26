@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hotelapp/feature/auth/signup_screen/data/model/signup_request_model.dart';
+import 'package:hotelapp/feature/auth/signup_screen/presentation/logic/signup_providers.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:hotelapp/core/themes/app_colors.dart';
 import 'package:hotelapp/core/widgets/app_button.dart';
 import 'signup_pages.dart';
 
-class SignupForm extends StatefulWidget {
+class SignupForm extends ConsumerStatefulWidget {
   const SignupForm({super.key});
 
   @override
-  State<SignupForm> createState() => _SignupFormState();
+  ConsumerState<SignupForm> createState() => _SignupFormState();
 }
 
-class _SignupFormState extends State<SignupForm> {
+class _SignupFormState extends ConsumerState<SignupForm> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
@@ -95,8 +98,20 @@ class _SignupFormState extends State<SignupForm> {
   }
 
   void _submitForm() {
-    // Handle signup logic here
-    print('Form submitted!');
+    final model = SignupRequestModel(
+      firstName: _firstNameCtrl.text.trim(),
+      lastName: _lastNameCtrl.text.trim(),
+      userName: _userNameCtrl.text.trim(),
+      email: _emailCtrl.text.trim(),
+      phoneNumber: _phoneCtrl.text.trim(),
+      country: _countryCtrl.text.trim(),
+      city: _cityCtrl.text.trim(),
+      address: _addressCtrl.text.trim(),
+      password: _passwordCtrl.text.trim(),
+      confirmPassword: _confirmPasswordCtrl.text.trim(),
+    );
+
+    ref.read(signupNotifierProvider.notifier).signUp(model);
   }
 
   @override
