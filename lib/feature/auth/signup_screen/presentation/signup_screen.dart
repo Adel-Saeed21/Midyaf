@@ -60,7 +60,7 @@ class SignupScreen extends StatelessWidget {
 
               verticalSpace(20.h),
 
-              SignupForm(),
+              const SignupForm(),
             ],
           ),
         ),
