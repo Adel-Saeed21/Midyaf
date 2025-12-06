@@ -24,5 +24,6 @@ final signupUseCaseProvider = Provider<SignUpUseCase>((ref) {
 /// StateNotifier Provider (main one)
 final signupNotifierProvider =
     StateNotifierProvider<SignupNotifier, SignupState>((ref) {
-  return SignupNotifier(ref.read(signupUseCaseProvider));
+  return SignupNotifier();
 });
+

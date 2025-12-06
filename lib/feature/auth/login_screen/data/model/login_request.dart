@@ -6,10 +6,16 @@ part 'login_request.g.dart';
 class LoginRequest {
   final String email;
   final String password;
+  final bool rememberMe; 
 
-  LoginRequest({required this.email, required this.password});
+  LoginRequest({
+    required this.email,
+    required this.password,
+    required this.rememberMe, 
+  });
 
   factory LoginRequest.fromJson(Map<String, dynamic> json) =>
       _$LoginRequestFromJson(json);
+
   Map<String, dynamic> toJson() => _$LoginRequestToJson(this);
 }

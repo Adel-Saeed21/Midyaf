@@ -111,7 +111,7 @@ class _SignupFormState extends ConsumerState<SignupForm> {
       confirmPassword: _confirmPasswordCtrl.text.trim(),
     );
 
-    ref.read(signupNotifierProvider.notifier).signUp(model);
+    ref.read(signupNotifierProvider.notifier).signup(model);
   }
 
   @override
