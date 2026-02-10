@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hotelapp/core/routing/app_route.dart';
 
-class HotelApp extends StatelessWidget {
-  const HotelApp({
+class MidyafApp extends StatelessWidget {
+  const MidyafApp({
     super.key,
     required this.appRouter,
     required this.initialRoute,

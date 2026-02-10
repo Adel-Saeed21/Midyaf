@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:hotelapp/core/routing/routes.dart';
-import 'package:hotelapp/feature/auth/login_screen/presentation/pages/login_screen.dart';
-import 'package:hotelapp/feature/auth/signup_screen/presentation/signup_screen.dart';
-import 'package:hotelapp/feature/start_screen/start_screen.dart';
+import 'package:hotelapp/feature/onboarding/onboarding_screen.dart';
 
 class AppRoute {
   Route generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case Routes.startScreen:
-        return MaterialPageRoute(builder: (_) => const StartScreen());
-      case Routes.loginScreen:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
-      case Routes.signupScreen:
-        return MaterialPageRoute(builder: (_) => const SignupScreen());
+    Widget page;
 
+    switch (settings.name) {
+      case Routes.onboardingScreen:
+        page = const OnboardingScreen();
+        break;
       default:
-        return MaterialPageRoute(builder: (_) => const Scaffold());
+        page = const Scaffold(body: Center(child: Text('Route not found')));
     }
+
+    return PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 280),
+      pageBuilder: (_, __, ___) => page,
+      transitionsBuilder: (_, animation, __, child) {
+        return SlideTransition(
+          position: Tween<Offset>(
+            begin: const Offset(0.05, 0),
+            end: Offset.zero,
+          ).animate(animation),
+          child: FadeTransition(opacity: animation, child: child),
+        );
+      },
+    );
   }
 }

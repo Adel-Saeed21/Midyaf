@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hotelapp/core/Di/get_it.dart';
 import 'package:hotelapp/core/routing/app_route.dart';
 import 'package:hotelapp/core/routing/routes.dart';
@@ -9,8 +8,6 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   setupDi();
   runApp(
-    ProviderScope(
-      child: HotelApp(appRouter: AppRoute(), initialRoute: Routes.startScreen),
-    ),
+    MidyafApp(appRouter: AppRoute(), initialRoute: Routes.onboardingScreen),
   );
 }

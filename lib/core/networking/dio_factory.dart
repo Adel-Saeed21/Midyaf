@@ -4,21 +4,28 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
   DioFactory._();
+
   static Dio? _dio;
 
-  static getDio() {
+  static Dio getDio() {
     if (_dio == null) {
       _dio = Dio(
         BaseOptions(
-          baseUrl: ApiConst.baseUrl,
+          baseUrl: ApiConst.baseurl,
           connectTimeout: const Duration(seconds: 30),
           receiveTimeout: const Duration(seconds: 30),
-          validateStatus: (status) => true,
-          headers: {'Content-Type': 'application/json'},
+
+          validateStatus: (status) {
+            return status != null && status >= 200 && status < 300;
+          },
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
         ),
       );
 
-      _dio?.interceptors.add(
+      _dio!.interceptors.add(
         PrettyDioLogger(
           requestHeader: true,
           requestBody: true,
@@ -29,6 +36,6 @@ class DioFactory {
         ),
       );
     }
-    return _dio;
+    return _dio!;
   }
 }
