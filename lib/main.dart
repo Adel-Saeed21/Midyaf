@@ -4,10 +4,20 @@ import 'package:hotelapp/core/routing/app_route.dart';
 import 'package:hotelapp/core/routing/routes.dart';
 import 'package:hotelapp/midyaf_app.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await _initializeApp();
+
+  final initialRoute = await _determineInitialRoute();
+
+  runApp(MidyafApp(appRouter: AppRoute(), initialRoute: initialRoute));
+}
+
+Future<void> _initializeApp() async {
   setupDi();
-  runApp(
-    MidyafApp(appRouter: AppRoute(), initialRoute: Routes.onboardingScreen),
-  );
+}
+
+Future<String> _determineInitialRoute() async {
+  return Routes.onboardingScreen;
 }
