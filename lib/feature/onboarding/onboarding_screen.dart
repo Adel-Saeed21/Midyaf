@@ -1,8 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hotelapp/core/helpers/spacing.dart';
+import 'package:hotelapp/core/themes/app_colors.dart';
 import 'package:hotelapp/core/themes/font_weight_helper.dart';
 import 'package:hotelapp/core/utils/app_assets.dart';
 import 'package:hotelapp/core/widgets/app_button.dart';
@@ -60,33 +59,18 @@ class OnboardingScreen extends StatelessWidget {
                         fontSize: 18.sp,
                       ),
                       onPressed: () {
-                       //  context.pushNamed(Routes.signupScreen);
+                        //  context.pushNamed(Routes.signupScreen);
                       },
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppColors.buttonColorBabyBlue,
                       radius: 20.r,
                       child: Text(
-                        "Sign up",
-                        style: TextStyle(color: Colors.black, fontSize: 15.sp),
+                        "Get Started",
+                        style: TextStyle(
+                          color: AppColors.textButtonWhite,
+                          fontSize: 15.sp,
+                        ),
                       ),
                     ),
-
-                    SizedBox(height: 15.h),
-
-                    AppButton(
-                      buttonHeight: 40.h,
-                      buttonWidth: 280.w,
-                      textStyle: TextStyle(color: Colors.grey, fontSize: 18.sp),
-                      onPressed: () {
-                        //context.pushNamed(Routes.loginScreen);
-                      },
-                      backgroundColor: Colors.white,
-                      radius: 20.r,
-                      child: Text(
-                        "Log In",
-                        style: TextStyle(color: Colors.black, fontSize: 15.sp),
-                      ),
-                    ),
-                    verticalSpace(80.h),
                   ],
                 ),
               ),
