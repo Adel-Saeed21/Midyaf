@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hotelapp/core/helpers/extensions.dart';
 import 'package:hotelapp/core/helpers/spacing.dart';
+import 'package:hotelapp/core/routing/routes.dart';
 import 'package:hotelapp/core/themes/app_colors.dart';
 import 'package:hotelapp/core/themes/font_weight_helper.dart';
 import 'package:hotelapp/core/utils/app_assets.dart';
@@ -92,7 +94,7 @@ class OnboardingScreen extends StatelessWidget {
                   AppButton(
                     buttonHeight: 56.h,
                     onPressed: () {
-                      //  context.pushNamed(Routes.signupScreen);
+                      context.pushNamed(Routes.registerScreen);
                     },
                     backgroundColor: AppColors.buttonColorBabyBlue,
                     radius: 16.r,
@@ -107,7 +109,6 @@ class OnboardingScreen extends StatelessWidget {
                   ),
                   verticalSpace(20),
 
-                  
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

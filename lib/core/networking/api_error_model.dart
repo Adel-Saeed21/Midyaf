@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'api_error_model.freezed.dart';
 
 @freezed
-class ApiErrorModel with _$ApiErrorModel {
+abstract class ApiErrorModel with _$ApiErrorModel {
   const factory ApiErrorModel({
     required String message,
     required ApiErrorType type,

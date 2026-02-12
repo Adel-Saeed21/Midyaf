@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hotelapp/core/Di/get_it.dart';
+import 'package:hotelapp/core/Di/register_screen_di.dart';
 import 'package:hotelapp/core/routing/routes.dart';
+import 'package:hotelapp/feature/auth/register/presentation/logic/register_cubit.dart';
+import 'package:hotelapp/feature/auth/register/presentation/register_screen.dart';
 import 'package:hotelapp/feature/onboarding/onboarding_screen.dart';
 
 class AppRoute {
@@ -9,6 +14,14 @@ class AppRoute {
     switch (settings.name) {
       case Routes.onboardingScreen:
         page = const OnboardingScreen();
+        break;
+
+      case Routes.registerScreen:
+        registerScreenDi();
+        page = BlocProvider(
+          create: (context) => getIt<RegisterCubit>(),
+          child: const RegisterScreen(),
+        );
         break;
       default:
         page = const Scaffold(body: Center(child: Text('Route not found')));

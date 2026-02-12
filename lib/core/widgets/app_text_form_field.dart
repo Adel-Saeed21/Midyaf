@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hotelapp/core/themes/app_colors.dart';
 
 class AppTextFormField extends StatelessWidget {
   final String? hintText;
   final Widget? suffixIcon;
-  final double radius;
-  final Color focusBorderColor;
-  final Color enableBorderColor;
-  final bool? isSecure;
+  final double borderRadius;
+  final Color focusedBorderColor;
+  final Color enabledBorderColor;
+  final bool obscureText;
   final Color? backgroundColor;
   final TextStyle? textStyle;
   final EdgeInsetsGeometry? contentPadding;
@@ -15,14 +16,16 @@ class AppTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Widget? label;
   final TextStyle? labelStyle;
+  final TextInputType? keyboardType;
+
   const AppTextFormField({
     super.key,
     this.hintText,
     this.suffixIcon,
-    required this.radius,
-    required this.focusBorderColor,
-    required this.enableBorderColor,
-    this.isSecure,
+    required this.borderRadius,
+    required this.focusedBorderColor,
+    required this.enabledBorderColor,
+    this.obscureText = false,
     this.contentPadding,
     this.textStyle,
     this.backgroundColor,
@@ -30,6 +33,7 @@ class AppTextFormField extends StatelessWidget {
     this.validator,
     this.label,
     this.labelStyle,
+    this.keyboardType,
   });
 
   @override
@@ -37,34 +41,36 @@ class AppTextFormField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       validator: validator,
+      obscureText: obscureText,
+      style: textStyle,
+      cursorColor: Colors.black,
+      keyboardType: keyboardType ?? TextInputType.text,
       decoration: InputDecoration(
-        fillColor: backgroundColor ?? Colors.white,
-        isDense: true,
         filled: true,
+        fillColor: backgroundColor ?? AppColors.textButtonWhite,
+        isDense: true,
         contentPadding:
             contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
-        enabledBorder: textFiledBorderType(radius, enableBorderColor),
-        focusedBorder: textFiledBorderType(radius, focusBorderColor),
-        errorBorder: textFiledBorderType(radius, Colors.red),
-        focusedErrorBorder: textFiledBorderType(radius, Colors.red),
-        border: textFiledBorderType(radius, enableBorderColor),
-        // hintStyle: TextStyles.font14LightGreyRegular,
+        // Borders
+        enabledBorder: textFieldBorder(borderRadius, enabledBorderColor),
+        focusedBorder: textFieldBorder(borderRadius, focusedBorderColor),
+        errorBorder: textFieldBorder(borderRadius, Colors.red),
+        focusedErrorBorder: textFieldBorder(borderRadius, Colors.red),
+        border: textFieldBorder(borderRadius, enabledBorderColor),
+        // Text / Icons
         hintText: hintText,
         suffixIcon: suffixIcon,
+        // Label
         label: label,
         labelStyle: labelStyle,
       ),
-      cursorColor: Colors.black,
-
-      obscureText: isSecure ?? false,
-      style: textStyle,
     );
   }
 
-  OutlineInputBorder textFiledBorderType(double radias, Color color) {
+  OutlineInputBorder textFieldBorder(double radius, Color color) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(radias),
+      borderRadius: BorderRadius.circular(radius),
       borderSide: BorderSide(color: color, width: 1.3.w),
     );
   }
