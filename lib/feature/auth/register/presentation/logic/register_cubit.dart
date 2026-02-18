@@ -19,7 +19,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   final TextEditingController cityController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   // State variables
   bool isPasswordVisible = false;
@@ -44,7 +45,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   void changeUserType(String type) {
     selectedUserType = type;
-    emit(RegisterUserTypeChanged());
+    emit(RegisterUserTypeChanged(type));
   }
 
   Future<void> register() async {

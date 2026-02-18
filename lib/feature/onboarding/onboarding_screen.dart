@@ -122,7 +122,9 @@ class OnboardingScreen extends StatelessWidget {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.pushNamed(Routes.loginScreen);
+                        },
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.symmetric(horizontal: 8.w),
                           minimumSize: Size.zero,

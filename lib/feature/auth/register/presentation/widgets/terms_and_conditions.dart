@@ -27,7 +27,9 @@ class TermsAndConditionsText extends StatelessWidget {
             fontWeight: FontWeightHelper.regular,
           ),
           children: [
-            const TextSpan(text: "By selecting Create Account, you agree to our "),
+            const TextSpan(
+              text: "By selecting Create Account, you agree to our ",
+            ),
             TextSpan(
               text: "Terms of Service",
               style: TextStyle(
@@ -36,10 +38,7 @@ class TermsAndConditionsText extends StatelessWidget {
                 decoration: TextDecoration.underline,
               ),
               recognizer: TapGestureRecognizer()
-                ..onTap = onTermsTapped ?? () {
-                  // TODO: Navigate to Terms of Service
-                  print("Terms of Service tapped");
-                },
+                ..onTap = onTermsTapped ?? () {},
             ),
             const TextSpan(text: " and "),
             TextSpan(
@@ -50,9 +49,7 @@ class TermsAndConditionsText extends StatelessWidget {
                 decoration: TextDecoration.underline,
               ),
               recognizer: TapGestureRecognizer()
-                ..onTap = onPrivacyTapped ?? () {
-                  print("Privacy Policy tapped");
-                },
+                ..onTap = onPrivacyTapped ?? () {},
             ),
             const TextSpan(text: "."),
           ],

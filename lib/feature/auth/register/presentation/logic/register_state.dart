@@ -24,4 +24,11 @@ class RegisterPasswordVisibilityChanged extends RegisterState {}
 
 class RegisterCountryCodeChanged extends RegisterState {}
 
-class RegisterUserTypeChanged extends RegisterState {}
+class RegisterUserTypeChanged extends RegisterState {
+  final String selectedUserType;
+  
+  RegisterUserTypeChanged(this.selectedUserType);
+  
+  @override
+  List<Object?> get props => [selectedUserType];
+}  

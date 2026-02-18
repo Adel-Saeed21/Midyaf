@@ -223,11 +223,12 @@ class RegisterFormField extends StatelessWidget {
 
   Widget _buildUserTypeToggle() {
     return BlocBuilder<RegisterCubit, RegisterState>(
+      buildWhen: (previous, current) => current is RegisterUserTypeChanged,
       builder: (context, state) {
         final cubit = context.read<RegisterCubit>();
         return UserTypeToggle(
           selectedType: cubit.selectedUserType,
-          onTypeChanged: (value) => cubit.changeUserType(value),
+          onTypeChanged: cubit.changeUserType,
         );
       },
     );
