@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hotelapp/core/Di/forget_password_screen_di.dart';
 import 'package:hotelapp/core/Di/get_it.dart';
 import 'package:hotelapp/core/Di/login_screen_di.dart';
 import 'package:hotelapp/core/Di/register_screen_di.dart';
 import 'package:hotelapp/core/routing/routes.dart';
+import 'package:hotelapp/feature/auth/forget_password/presentation/forget_password_screen.dart';
 import 'package:hotelapp/feature/auth/login/presentation/login_screen.dart';
 import 'package:hotelapp/feature/auth/register/presentation/logic/register_cubit.dart';
 import 'package:hotelapp/feature/auth/register/presentation/register_screen.dart';
@@ -28,6 +30,10 @@ class AppRoute {
       case Routes.loginScreen:
         loginScreenDi();
         page = const LoginScreen();
+        break;
+      case Routes.forgetPasswordScreen:
+        forgetPasswordScreenDi();
+        page = const ForgetPasswordScreen();
         break;
       default:
         page = const Scaffold(body: Center(child: Text('Route not found')));

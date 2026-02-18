@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hotelapp/core/helpers/extensions.dart';
 import 'package:hotelapp/core/helpers/spacing.dart';
 import 'package:hotelapp/core/helpers/validation_helpers.dart';
+import 'package:hotelapp/core/routing/routes.dart';
 import 'package:hotelapp/core/themes/app_colors.dart';
 import 'package:hotelapp/core/themes/font_weight_helper.dart';
 import 'package:hotelapp/feature/auth/login/data/models/login_request_body.dart';
@@ -57,7 +59,9 @@ class _LoginFormState extends State<LoginForm> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(Routes.forgetPasswordScreen);
+          },
           child: Text(
             "Forget password?",
             style: TextStyle(
